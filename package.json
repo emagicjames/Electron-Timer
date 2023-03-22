@@ -1,0 +1,29 @@
+{
+  "name": "electron-timer",
+  "version": "1.0.0",
+  "description": "my timer",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build:win": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "electron-builder": "^23.6.0",
+    "electron": "^23.1.4"
+  },
+  "build": {
+    "appId": "com.example.timer",
+    "productName": "Timer",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

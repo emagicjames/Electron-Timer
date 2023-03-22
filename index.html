@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <style>
+        body {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Timer</h1>
+    <div id="timer">00:00:00</div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="pause">Pause</button>
+    <script>
+        const timer = document.getElementById('timer');
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const pauseButton = document.getElementById('pause');
+        let startTime, timerInterval;
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                const elapsedTime = Date.now() - startTime;
+                const seconds = Math.floor(elapsedTime / 1000) % 60;
+                const minutes = Math.floor(elapsedTime / 1000 / 60) % 60;
+                const hours = Math.floor(elapsedTime / 1000 / 60 / 60);
+                timer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timer.textContent = '00:00:00';
+        }
+        function pauseTimer() {
+            clearInterval(timerInterval);
+        }
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+        pauseButton.addEventListener('click', pauseTimer);
+    </script>
+</body>
+
+</html>
